@@ -40,6 +40,10 @@ public class SpringDataJpaService {
 		return retrievedEntity.isPresent() ? retrievedEntity.get() : null;
 	}
 
+	public List<Product> findProductByPrice(Double price) {
+		return productRepository.findByPrice(price);
+	}
+
 	public Product findProductByName(String name) {
 		return productRepository.findByName(name);
 	}

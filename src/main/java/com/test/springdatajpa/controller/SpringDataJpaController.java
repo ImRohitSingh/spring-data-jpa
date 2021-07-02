@@ -44,6 +44,12 @@ public class SpringDataJpaController {
 		return new ResponseEntity<>(response, responseCode);
 	}
 
+	@GetMapping(path = "/findByPrice/{price}")
+	public ResponseEntity<List<Product>> getProductByPrice(
+			@PathVariable(name = "price", required = true) Double price) {
+		return new ResponseEntity<>(springDataJpaService.findProductByPrice(price), HttpStatus.OK);
+	}
+
 	@GetMapping(path = "/findByName/{name}")
 	public ResponseEntity<Product> getProductByName(@PathVariable(name = "name", required = true) String name) {
 		Product response = springDataJpaService.findProductByName(name);
